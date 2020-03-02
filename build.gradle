@@ -1,0 +1,86 @@
+buildscript{
+    ext {
+        springBootVersion = '1.5.11.RELEASE'
+        dependencyManagementVersion = '1.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}")
+    }
+}
+
+
+
+apply plugin : 'java'
+apply plugin:'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply from : 'config.gradle'
+
+group ='com.pmo.pfc'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+configurations {
+    //all*.exclude group: 'com.vaadin.external.google' ,module: 'android'
+}
+
+dependencies {
+    // compile("org.apache.hadoop:hadoop-common:2.5.1")
+// https://mvnrepository.com/artifact/org.apache.hive/hive-exec
+    // compile group: 'org.apache.hive', name: 'hive-exec', version: '3.1.2'
+
+
+    //compile("org.apache.hadoop:hadoop-client:3.2.1")
+    //compile("org.apache.hadoop:hadoop-hdfs:3.2.1")
+    compile(libs['springBootWebStarter'])
+    //compile files("${System.properties['java.home']}/lib/tools.jar")
+
+    compile(libs['springBootActuatorStarter'])
+    compile(libs['springBootRedisStarter'])
+    compile(libs['springBootWebsocketStarter'])
+    compile(libs['springBootAopStarter'])
+
+    compile(libs['springBootThymeleaftarter'])
+    compile(libs['springBootBatch'])
+    compile(libs['swagger2'])
+    compile(libs['swagger2_ui'])
+    compile(libs['springBootValidationStarter'])
+    compile(libs['junit'])
+    compile(libs['springBootTest'])
+    compile(libs['springTest'])
+    compile('org.springframework:spring-context-support')
+    compile(libs['hibernateValidator'])
+    compile(libs['mybatisSpringBootStarter'])
+    compile(libs['druid']) {
+        exclude group : "com.alibaba",module:"tools"
+        exclude group : "com.alibaba",module:"jconsole"
+    }
+     compile(libs['mysql'])
+     compile(libs['sqlServer'])
+     compile(libs['guava'])
+     compile(libs['fastjson'])
+     compile(libs['commonsCollections'])
+     compile(libs['commonsLang3'])
+     compile(libs['commonsText'])
+     compile(libs['commonsIO'])
+     compile(libs['commonsLang'])
+     compile(libs['quartz'])
+     compile(libs['quartzJobs'])
+     compile(libs['okhttp'])
+     compile(libs['okhttpUrlConnection'])
+     compile(libs['jsoup'])
+     compile(libs['poi'])
+     compile(libs['poi_ooxml'])
+     compile(libs['jgrapht'])
+     compile(libs['hanlp'])
+     compile(libs['lombok'])
+     compile(libs['junit'])
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+repositories {
+    mavenCentral()
+}

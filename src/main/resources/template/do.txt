@@ -1,0 +1,10 @@
+public class ${className} {
+
+#foreach($item in $sampleList)
+	/**
+	* 描述
+	*字段备注
+	*/	
+	private ${item.javaType} ${item.propNme};
+	
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="row col-md-5 text-center">
+        <div class="input-group"><!--保持内联，消除边框，类似于form-inline-->
+            <div class="input-group-btn"><!--不换行，与相邻元素内联，包含dropdown-->
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    请选择<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0);">宝贝</a></li>
+                    <li><a href="javascript:void(0);">店铺</a></li>
+                </ul>
+            </div>
+            <input type="text" class="form-control" placeholder="请输入关键词" />
+            <span class="input-group-btn"><!--不换行，与相邻元素内联-->
+                  <button class="btn btn-primary">搜索</button>
+            </span>
+        </div>
+    </div>
+
+
+</body>
+</html>

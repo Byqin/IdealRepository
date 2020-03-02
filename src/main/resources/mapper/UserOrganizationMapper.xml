@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmo.pfc.dao.mapper.UserOrganizationMapper">
+
+	<!--> 表字段与属性映射关系 <!-->
+    <resultMap id="UserOrganizationMap" type="com.pmo.pfc.dao.entity.UserOrganizationDTO">
+    				<result column="id" property="id" javaType="java.lang.Integer" />
+					<result column="create_by" property="createBy" javaType="java.lang.String" />
+					<result column="create_date" property="createDate" javaType="java.util.Date" />
+					<result column="update_by" property="updateBy" javaType="java.lang.String" />
+					<result column="update_date" property="updateDate" javaType="java.util.Date" />
+					<result column="ver" property="ver" javaType="java.lang.Integer" />
+					<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
+					<result column="org_name" property="orgName" javaType="java.lang.String" />
+					<result column="org_code" property="orgCode" javaType="java.lang.String" />
+				
+	</resultMap>
+    
+    <!--> 根据动态条件查询 <!-->
+    <select id="selectByQuery" parameterType="com.pmo.pfc.dao.query.UserOrganizationQuery" resultMap="UserOrganizationMap">
+            SELECT
+                 <include refid="baseColumn" />
+            FROM user_organization
+            <where>
+                <include refid="baseCriteria" />
+            </where>
+    </select>
+    
+     <!--> 根据主键查询 <!-->
+    <select id="selectByPrimary" parameterType="java.lang.Integer" resultMap="UserOrganizationMap">
+            SELECT
+                <include refid="baseColumn" />
+            FROM user_organization
+            WHERE
+                id = #{id}
+    </select>
+
+	<!--> 添加信息，不含null的字段 <!-->
+    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.UserOrganizationDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into user_organization
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+             	             						             		             		
+				    <if test="createBy != null">
+	                    create_by,
+	                </if>
+	                				             		             		
+				    <if test="createDate != null">
+	                    create_date,
+	                </if>
+	                				             		             		
+				    <if test="updateBy != null">
+	                    update_by,
+	                </if>
+	                				             		             		
+				    <if test="updateDate != null">
+	                    update_date,
+	                </if>
+	                				             		             		
+				    <if test="ver != null">
+	                    ver,
+	                </if>
+	                				             		             		
+				    <if test="isDelete != null">
+	                    is_delete,
+	                </if>
+	                				             		             		
+				    <if test="orgName != null">
+	                    org_name,
+	                </if>
+	                				             		             		
+				    <if test="orgCode != null">
+	                    org_code,
+	                </if>
+	                								
+            </trim>
+            
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+		        		        							        			        	
+					<if test="createBy != null">
+		            	#{createBy,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="createDate != null">
+		            	#{createDate,jdbcType=DATE},
+		        	</if>
+		        							        			        	
+					<if test="updateBy != null">
+		            	#{updateBy,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="updateDate != null">
+		            	#{updateDate,jdbcType=DATE},
+		        	</if>
+		        							        			        	
+					<if test="ver != null">
+		            	#{ver,jdbcType=INTEGER},
+		        	</if>
+		        							        			        	
+					<if test="isDelete != null">
+		            	#{isDelete,jdbcType=INTEGER},
+		        	</if>
+		        							        			        	
+					<if test="orgName != null">
+		            	#{orgName,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="orgCode != null">
+		            	#{orgCode,jdbcType=VARCHAR},
+		        	</if>
+		        									
+            </trim>
+    </insert>
+    
+    <!--> 添加信息，含null的字段 <!-->
+    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.UserOrganizationDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into user_organization(<include refid="baseInsertColumn" />)
+        values(
+            <include refid="baseInsertColumnValue" />
+        );
+    </insert>
+    
+    <!--> 批量添加信息，含null的字段 <!-->
+    <insert id="batchInsert">
+        insert into user_organization(<include refid="baseInsertColumn" />)
+        values
+            <trim suffixOverrides=",">
+                <foreach collection="list" item="record" separator=","  >
+                     (<include refid="baseInsertColumnValue" /> )
+                </foreach>
+            </trim>
+    </insert>
+    
+     <!--> 根据主键更新，不含null的字段 <!-->
+    <update id="updateByPrimary" parameterType="java.util.Map" >
+        update user_organization
+        set
+            <include refid="baseUpdate" />
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    
+    <!--> 根据主键更新，含null的字段 <!-->
+    <update id="updateByPrimaryWithNull" parameterType="java.util.Map" >
+        update user_organization
+        set
+        <include refid="baseUpdateWithNull" />
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    
+    <!--> 根据动态条件更新，不含null的字段 <!-->
+    <update id="updateByQuery">
+        update user_organization
+        set
+        <include refid="baseUpdate" />
+        <where>
+            <include refid="baseCriteria" />
+        </where>
+    </update>
+    
+    <!--> 根据动态条件更新，含null的字段 <!-->
+    <update id="updateByQueryWithNull">
+        update user_organization
+        set
+        <include refid="baseUpdateWithNull" />
+        <where>
+            <include refid="baseCriteria" />
+        </where>
+    </update>
+    
+    <!--> 根据主键删除 <!-->
+    <delete id="deleteByPrimary">
+        delete from user_organization
+        where
+            id = #{id}
+    </delete>
+    
+     <!--> 根据动态条件删除 <!-->
+    <delete id="deleteByQuery">
+        delete from user_organization
+        <where>
+            <include refid="baseCriteria" />
+        </where>
+    </delete>
+    
+    <!--> 基础查询字段 <!-->
+    <sql id="baseColumn">
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		org_name,		org_code				
+    </sql>
+    
+    <!--> 基础插入字段 <!-->
+    <sql id="baseInsertColumn">
+        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		org_name,		org_code				
+    </sql>
+    
+     <!--> 基础插入字段值 <!-->
+    <sql id="baseInsertColumnValue">
+       <trim suffixOverrides=",">
+					     					
+    		<if test="record.createBy == null">
+	            	null,
+	         </if>
+	         <if test="record.createBy != null">
+	            	#{record.createBy},
+	        </if>
+	        	     					
+    		<if test="record.createDate == null">
+	            	null,
+	         </if>
+	         <if test="record.createDate != null">
+	            	#{record.createDate},
+	        </if>
+	        	     					
+    		<if test="record.updateBy == null">
+	            	null,
+	         </if>
+	         <if test="record.updateBy != null">
+	            	#{record.updateBy},
+	        </if>
+	        	     					
+    		<if test="record.updateDate == null">
+	            	null,
+	         </if>
+	         <if test="record.updateDate != null">
+	            	#{record.updateDate},
+	        </if>
+	        	     					
+    		<if test="record.ver == null">
+	            	null,
+	         </if>
+	         <if test="record.ver != null">
+	            	#{record.ver},
+	        </if>
+	        	     					
+    		<if test="record.isDelete == null">
+	            	null,
+	         </if>
+	         <if test="record.isDelete != null">
+	            	#{record.isDelete},
+	        </if>
+	        	     					
+    		<if test="record.orgName == null">
+	            	null,
+	         </if>
+	         <if test="record.orgName != null">
+	            	#{record.orgName},
+	        </if>
+	        	     					
+    		<if test="record.orgCode == null">
+	            	null,
+	         </if>
+	         <if test="record.orgCode != null">
+	            	#{record.orgCode},
+	        </if>
+	        	     	     
+	    </trim>
+    </sql>
+    
+     <!--> 基础条件 <!-->
+    <sql id="baseCriteria">
+        <if test="data != null">
+            <foreach collection="data.values" item="item">
+                <choose>
+                    <when test="item.isColumn">
+                        <if test="item.isNormal">
+                            ${item.columnName} ${item.expression} #{item.value}
+                        </if>
+                        <if test="item.isLike">
+                            ${item.expression} ( #{item.value} , ${item.columnName} )   &gt; 0
+                        </if>
+                        <if test="item.isNotLike">
+                            ${item.expression} ( #{item.value} , ${item.columnName} )    &lt;= 0
+                        </if>
+                        <if test="item.isIn">
+                            ${item.columnName} ${item.expression}
+                            <foreach collection="item.value" item="each" open="(" close=")" separator="," >
+                                #{each}
+                            </foreach>
+                        </if>
+                    </when>
+                    <otherwise>
+                        ${item.expression}
+                    </otherwise>
+                </choose>
+            </foreach>
+        </if>
+    </sql>
+    
+    <!--> 基础更新字段，含null的不更新 <!-->
+    <sql id="baseUpdate">
+        <trim suffixOverrides="," >
+            update_date = now(),
+                            
+			<if test="record.createBy != null">
+			    	create_by = #{record.createBy},
+			</if>
+                                    
+			<if test="record.createDate != null">
+			    	create_date = #{record.createDate},
+			</if>
+                                    
+			<if test="record.updateBy != null">
+			    	update_by = #{record.updateBy},
+			</if>
+                                                            
+			<if test="record.ver != null">
+			    	ver = #{record.ver},
+			</if>
+                                    
+			<if test="record.isDelete != null">
+			    	is_delete = #{record.isDelete},
+			</if>
+                                    
+			<if test="record.orgName != null">
+			    	org_name = #{record.orgName},
+			</if>
+                                    
+			<if test="record.orgCode != null">
+			    	org_code = #{record.orgCode},
+			</if>
+                                
+        </trim>
+    </sql>
+    
+    <!--> 基础更新全部字段 <!-->
+    <sql id="baseUpdateWithNull">
+        <trim suffixOverrides="," >
+            update_date = now(),
+                                               	
+        	<choose>
+                <when test="record.createBy != null">create_by = #{record.createBy},</when>
+                <otherwise>create_by = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.createDate != null">create_date = #{record.createDate},</when>
+                <otherwise>create_date = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.updateBy != null">update_by = #{record.updateBy},</when>
+                <otherwise>update_by = null,</otherwise>
+            </choose>
+                                                                                    	
+        	<choose>
+                <when test="record.ver != null">ver = #{record.ver},</when>
+                <otherwise>ver = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.isDelete != null">is_delete = #{record.isDelete},</when>
+                <otherwise>is_delete = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.orgName != null">org_name = #{record.orgName},</when>
+                <otherwise>org_name = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.orgCode != null">org_code = #{record.orgCode},</when>
+                <otherwise>org_code = null,</otherwise>
+            </choose>
+                                   
+        </trim>
+    </sql>
+    
+</mapper>

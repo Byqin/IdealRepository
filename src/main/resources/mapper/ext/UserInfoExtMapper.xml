@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmo.pfc.dao.mapper.ext.UserInfoExtMapper">
+
+    <!--> 表字段与属性映射关系 <!-->
+    <resultMap id="UserInfoMap" type="com.pmo.pfc.dao.entity.UserInfoDTO">
+        <result column="id" property="id" javaType="java.lang.Integer" />
+        <result column="create_by" property="createBy" javaType="java.lang.String" />
+        <result column="create_date" property="createDate" javaType="java.util.Date" />
+        <result column="update_by" property="updateBy" javaType="java.lang.String" />
+        <result column="update_date" property="updateDate" javaType="java.util.Date" />
+        <result column="ver" property="ver" javaType="java.lang.Integer" />
+        <result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
+        <result column="user_id" property="userId" javaType="java.lang.String" />
+        <result column="user_name_cn" property="userNameCn" javaType="java.lang.String" />
+        <result column="user_name_en" property="userNameEn" javaType="java.lang.String" />
+        <result column="sex" property="sex" javaType="java.lang.Integer" />
+        <result column="user_age" property="userAge" javaType="java.lang.Integer" />
+        <result column="email" property="email" javaType="java.lang.String" />
+        <result column="user_phone" property="userPhone" javaType="java.lang.String" />
+        <result column="head_portrait" property="headPortrait" javaType="java.lang.Byte" />
+        <result column="birthday" property="birthday" javaType="java.util.Date" />
+
+    </resultMap>
+
+    <select id="selectUserInfoByUserId" parameterType="java.lang.String" resultMap="UserInfoMap">
+        SELECT
+        <include refid="baseColumn" />
+        FROM user_info
+        WHERE
+        user_id = #{userId}
+    </select>
+
+    <!--> 基础查询字段 <!-->
+    <sql id="baseColumn">
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		user_id,		user_name_cn,		user_name_en,		sex,		user_age,		email,		user_phone,		head_portrait,		birthday
+    </sql>
+
+</mapper>
