@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class UserOrganizationDTO extends BaseEntity {
+public class OrganizationInfoEntity extends BaseEntity {
 
 									
 	/**
