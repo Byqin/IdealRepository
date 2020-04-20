@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pmo.pfc.dao.mapper.OrganizationRoleRelationMapper">
+<mapper namespace="com.pmo.pfc.dao.mapper.OrganizationInfoMapper">
 
 	<!--> 表字段与属性映射关系 <!-->
-    <resultMap id="OrganizationRoleRelationMap" type="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity">
+    <resultMap id="OrganizationInfoMap" type="com.pmo.pfc.dao.entity.OrganizationInfoEntity">
     				<result column="id" property="id" javaType="java.lang.Integer" />
 					<result column="create_by" property="createBy" javaType="java.lang.String" />
 					<result column="create_date" property="createDate" javaType="java.util.Date" />
@@ -13,33 +13,33 @@
 					<result column="update_date" property="updateDate" javaType="java.util.Date" />
 					<result column="ver" property="ver" javaType="java.lang.Integer" />
 					<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
-					<result column="role_id" property="roleId" javaType="java.lang.Integer" />
+					<result column="org_name" property="orgName" javaType="java.lang.String" />
 					<result column="org_code" property="orgCode" javaType="java.lang.String" />
 				
 	</resultMap>
     
     <!--> 根据动态条件查询 <!-->
-    <select id="selectByQuery" parameterType="com.pmo.pfc.dao.query.OrganizationRoleRelationQuery" resultMap="OrganizationRoleRelationMap">
+    <select id="selectByQuery" parameterType="com.pmo.pfc.dao.query.OrganizationInfoQuery" resultMap="OrganizationInfoMap">
             SELECT
                  <include refid="baseColumn" />
-            FROM organization_role_relation
+            FROM organization_info
             <where>
                 <include refid="baseCriteria" />
             </where>
     </select>
     
      <!--> 根据主键查询 <!-->
-    <select id="selectByPrimary" parameterType="java.lang.Integer" resultMap="OrganizationRoleRelationMap">
+    <select id="selectByPrimary" parameterType="java.lang.Integer" resultMap="OrganizationInfoMap">
             SELECT
                 <include refid="baseColumn" />
-            FROM organization_role_relation
+            FROM organization_info
             WHERE
                 id = #{id}
     </select>
 
 	<!--> 添加信息，不含null的字段 <!-->
-    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into organization_role_relation
+    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.OrganizationInfoEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into organization_info
             <trim prefix="(" suffix=")" suffixOverrides=",">
              	             						             		             		
 				    <if test="createBy != null">
@@ -66,8 +66,8 @@
 	                    is_delete,
 	                </if>
 	                				             		             		
-				    <if test="roleId != null">
-	                    role_id,
+				    <if test="orgName != null">
+	                    org_name,
 	                </if>
 	                				             		             		
 				    <if test="orgCode != null">
@@ -102,8 +102,8 @@
 		            	#{isDelete,jdbcType=INTEGER},
 		        	</if>
 		        							        			        	
-					<if test="roleId != null">
-		            	#{roleId,jdbcType=INTEGER},
+					<if test="orgName != null">
+		            	#{orgName,jdbcType=VARCHAR},
 		        	</if>
 		        							        			        	
 					<if test="orgCode != null">
@@ -114,8 +114,8 @@
     </insert>
     
     <!--> 添加信息，含null的字段 <!-->
-    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into organization_role_relation(<include refid="baseInsertColumn" />)
+    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.OrganizationInfoEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into organization_info(<include refid="baseInsertColumn" />)
         values(
             <include refid="baseInsertColumnValue" />
         );
@@ -123,7 +123,7 @@
     
     <!--> 批量添加信息，含null的字段 <!-->
     <insert id="batchInsert">
-        insert into organization_role_relation(<include refid="baseInsertColumn" />)
+        insert into organization_info(<include refid="baseInsertColumn" />)
         values
             <trim suffixOverrides=",">
                 <foreach collection="list" item="record" separator=","  >
@@ -134,7 +134,7 @@
     
      <!--> 根据主键更新，不含null的字段 <!-->
     <update id="updateByPrimary" parameterType="java.util.Map" >
-        update organization_role_relation
+        update organization_info
         set
             <include refid="baseUpdate" />
         <where>
@@ -144,7 +144,7 @@
     
     <!--> 根据主键更新，含null的字段 <!-->
     <update id="updateByPrimaryWithNull" parameterType="java.util.Map" >
-        update organization_role_relation
+        update organization_info
         set
         <include refid="baseUpdateWithNull" />
         <where>
@@ -154,7 +154,7 @@
     
     <!--> 根据动态条件更新，不含null的字段 <!-->
     <update id="updateByQuery">
-        update organization_role_relation
+        update organization_info
         set
         <include refid="baseUpdate" />
         <where>
@@ -164,7 +164,7 @@
     
     <!--> 根据动态条件更新，含null的字段 <!-->
     <update id="updateByQueryWithNull">
-        update organization_role_relation
+        update organization_info
         set
         <include refid="baseUpdateWithNull" />
         <where>
@@ -174,14 +174,14 @@
     
     <!--> 根据主键删除 <!-->
     <delete id="deleteByPrimary">
-        delete from organization_role_relation
+        delete from organization_info
         where
             id = #{id}
     </delete>
     
      <!--> 根据动态条件删除 <!-->
     <delete id="deleteByQuery">
-        delete from organization_role_relation
+        delete from organization_info
         <where>
             <include refid="baseCriteria" />
         </where>
@@ -189,12 +189,12 @@
     
     <!--> 基础查询字段 <!-->
     <sql id="baseColumn">
-        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		org_code				
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		org_name,		org_code				
     </sql>
     
     <!--> 基础插入字段 <!-->
     <sql id="baseInsertColumn">
-        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		org_code				
+        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		org_name,		org_code				
     </sql>
     
      <!--> 基础插入字段值 <!-->
@@ -243,11 +243,11 @@
 	            	#{record.isDelete},
 	        </if>
 	        	     					
-    		<if test="record.roleId == null">
+    		<if test="record.orgName == null">
 	            	null,
 	         </if>
-	         <if test="record.roleId != null">
-	            	#{record.roleId},
+	         <if test="record.orgName != null">
+	            	#{record.orgName},
 	        </if>
 	        	     					
     		<if test="record.orgCode == null">
@@ -315,8 +315,8 @@
 			    	is_delete = #{record.isDelete},
 			</if>
                                     
-			<if test="record.roleId != null">
-			    	role_id = #{record.roleId},
+			<if test="record.orgName != null">
+			    	org_name = #{record.orgName},
 			</if>
                                     
 			<if test="record.orgCode != null">
@@ -357,8 +357,8 @@
             </choose>
                                                    	
         	<choose>
-                <when test="record.roleId != null">role_id = #{record.roleId},</when>
-                <otherwise>role_id = null,</otherwise>
+                <when test="record.orgName != null">org_name = #{record.orgName},</when>
+                <otherwise>org_name = null,</otherwise>
             </choose>
                                                    	
         	<choose>

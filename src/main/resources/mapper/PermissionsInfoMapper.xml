@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pmo.pfc.dao.mapper.OrganizationRoleRelationMapper">
+<mapper namespace="com.pmo.pfc.dao.mapper.PermissionsInfoMapper">
 
 	<!--> 表字段与属性映射关系 <!-->
-    <resultMap id="OrganizationRoleRelationMap" type="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity">
+    <resultMap id="PermissionsInfoMap" type="com.pmo.pfc.dao.entity.PermissionsInfoEntity">
     				<result column="id" property="id" javaType="java.lang.Integer" />
 					<result column="create_by" property="createBy" javaType="java.lang.String" />
 					<result column="create_date" property="createDate" javaType="java.util.Date" />
@@ -13,33 +13,41 @@
 					<result column="update_date" property="updateDate" javaType="java.util.Date" />
 					<result column="ver" property="ver" javaType="java.lang.Integer" />
 					<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
-					<result column="role_id" property="roleId" javaType="java.lang.Integer" />
-					<result column="org_code" property="orgCode" javaType="java.lang.String" />
+					<result column="p_name" property="pName" javaType="java.lang.String" />
+					<result column="p_code" property="pCode" javaType="java.lang.String" />
+					<result column="parent_code" property="parentCode" javaType="java.lang.String" />
+					<result column="complete_code" property="completeCode" javaType="java.lang.String" />
+					<result column="request_url" property="requestUrl" javaType="java.lang.String" />
+					<result column="request_page" property="requestPage" javaType="java.lang.String" />
+					<result column="extension_one" property="extensionOne" javaType="java.lang.String" />
+					<result column="extension_two" property="extensionTwo" javaType="java.lang.String" />
+					<result column="extension_three" property="extensionThree" javaType="java.lang.String" />
+					<result column="extension_four" property="extensionFour" javaType="java.lang.String" />
 				
 	</resultMap>
     
     <!--> 根据动态条件查询 <!-->
-    <select id="selectByQuery" parameterType="com.pmo.pfc.dao.query.OrganizationRoleRelationQuery" resultMap="OrganizationRoleRelationMap">
+    <select id="selectByQuery" parameterType="com.pmo.pfc.dao.query.PermissionsInfoQuery" resultMap="PermissionsInfoMap">
             SELECT
                  <include refid="baseColumn" />
-            FROM organization_role_relation
+            FROM permissions_info
             <where>
                 <include refid="baseCriteria" />
             </where>
     </select>
     
      <!--> 根据主键查询 <!-->
-    <select id="selectByPrimary" parameterType="java.lang.Integer" resultMap="OrganizationRoleRelationMap">
+    <select id="selectByPrimary" parameterType="java.lang.Integer" resultMap="PermissionsInfoMap">
             SELECT
                 <include refid="baseColumn" />
-            FROM organization_role_relation
+            FROM permissions_info
             WHERE
                 id = #{id}
     </select>
 
 	<!--> 添加信息，不含null的字段 <!-->
-    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into organization_role_relation
+    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.PermissionsInfoEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into permissions_info
             <trim prefix="(" suffix=")" suffixOverrides=",">
              	             						             		             		
 				    <if test="createBy != null">
@@ -66,12 +74,44 @@
 	                    is_delete,
 	                </if>
 	                				             		             		
-				    <if test="roleId != null">
-	                    role_id,
+				    <if test="pName != null">
+	                    p_name,
 	                </if>
 	                				             		             		
-				    <if test="orgCode != null">
-	                    org_code,
+				    <if test="pCode != null">
+	                    p_code,
+	                </if>
+	                				             		             		
+				    <if test="parentCode != null">
+	                    parent_code,
+	                </if>
+	                				             		             		
+				    <if test="completeCode != null">
+	                    complete_code,
+	                </if>
+	                				             		             		
+				    <if test="requestUrl != null">
+	                    request_url,
+	                </if>
+	                				             		             		
+				    <if test="requestPage != null">
+	                    request_page,
+	                </if>
+	                				             		             		
+				    <if test="extensionOne != null">
+	                    extension_one,
+	                </if>
+	                				             		             		
+				    <if test="extensionTwo != null">
+	                    extension_two,
+	                </if>
+	                				             		             		
+				    <if test="extensionThree != null">
+	                    extension_three,
+	                </if>
+	                				             		             		
+				    <if test="extensionFour != null">
+	                    extension_four,
 	                </if>
 	                								
             </trim>
@@ -102,20 +142,52 @@
 		            	#{isDelete,jdbcType=INTEGER},
 		        	</if>
 		        							        			        	
-					<if test="roleId != null">
-		            	#{roleId,jdbcType=INTEGER},
+					<if test="pName != null">
+		            	#{pName,jdbcType=VARCHAR},
 		        	</if>
 		        							        			        	
-					<if test="orgCode != null">
-		            	#{orgCode,jdbcType=VARCHAR},
+					<if test="pCode != null">
+		            	#{pCode,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="parentCode != null">
+		            	#{parentCode,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="completeCode != null">
+		            	#{completeCode,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="requestUrl != null">
+		            	#{requestUrl,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="requestPage != null">
+		            	#{requestPage,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="extensionOne != null">
+		            	#{extensionOne,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="extensionTwo != null">
+		            	#{extensionTwo,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="extensionThree != null">
+		            	#{extensionThree,jdbcType=VARCHAR},
+		        	</if>
+		        							        			        	
+					<if test="extensionFour != null">
+		            	#{extensionFour,jdbcType=VARCHAR},
 		        	</if>
 		        									
             </trim>
     </insert>
     
     <!--> 添加信息，含null的字段 <!-->
-    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.OrganizationRoleRelationEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into organization_role_relation(<include refid="baseInsertColumn" />)
+    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.PermissionsInfoEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into permissions_info(<include refid="baseInsertColumn" />)
         values(
             <include refid="baseInsertColumnValue" />
         );
@@ -123,7 +195,7 @@
     
     <!--> 批量添加信息，含null的字段 <!-->
     <insert id="batchInsert">
-        insert into organization_role_relation(<include refid="baseInsertColumn" />)
+        insert into permissions_info(<include refid="baseInsertColumn" />)
         values
             <trim suffixOverrides=",">
                 <foreach collection="list" item="record" separator=","  >
@@ -134,7 +206,7 @@
     
      <!--> 根据主键更新，不含null的字段 <!-->
     <update id="updateByPrimary" parameterType="java.util.Map" >
-        update organization_role_relation
+        update permissions_info
         set
             <include refid="baseUpdate" />
         <where>
@@ -144,7 +216,7 @@
     
     <!--> 根据主键更新，含null的字段 <!-->
     <update id="updateByPrimaryWithNull" parameterType="java.util.Map" >
-        update organization_role_relation
+        update permissions_info
         set
         <include refid="baseUpdateWithNull" />
         <where>
@@ -154,7 +226,7 @@
     
     <!--> 根据动态条件更新，不含null的字段 <!-->
     <update id="updateByQuery">
-        update organization_role_relation
+        update permissions_info
         set
         <include refid="baseUpdate" />
         <where>
@@ -164,7 +236,7 @@
     
     <!--> 根据动态条件更新，含null的字段 <!-->
     <update id="updateByQueryWithNull">
-        update organization_role_relation
+        update permissions_info
         set
         <include refid="baseUpdateWithNull" />
         <where>
@@ -174,14 +246,14 @@
     
     <!--> 根据主键删除 <!-->
     <delete id="deleteByPrimary">
-        delete from organization_role_relation
+        delete from permissions_info
         where
             id = #{id}
     </delete>
     
      <!--> 根据动态条件删除 <!-->
     <delete id="deleteByQuery">
-        delete from organization_role_relation
+        delete from permissions_info
         <where>
             <include refid="baseCriteria" />
         </where>
@@ -189,12 +261,12 @@
     
     <!--> 基础查询字段 <!-->
     <sql id="baseColumn">
-        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		org_code				
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		p_name,		p_code,		parent_code,		complete_code,		request_url,		request_page,		extension_one,		extension_two,		extension_three,		extension_four				
     </sql>
     
     <!--> 基础插入字段 <!-->
     <sql id="baseInsertColumn">
-        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		org_code				
+        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		p_name,		p_code,		parent_code,		complete_code,		request_url,		request_page,		extension_one,		extension_two,		extension_three,		extension_four				
     </sql>
     
      <!--> 基础插入字段值 <!-->
@@ -243,18 +315,74 @@
 	            	#{record.isDelete},
 	        </if>
 	        	     					
-    		<if test="record.roleId == null">
+    		<if test="record.pName == null">
 	            	null,
 	         </if>
-	         <if test="record.roleId != null">
-	            	#{record.roleId},
+	         <if test="record.pName != null">
+	            	#{record.pName},
 	        </if>
 	        	     					
-    		<if test="record.orgCode == null">
+    		<if test="record.pCode == null">
 	            	null,
 	         </if>
-	         <if test="record.orgCode != null">
-	            	#{record.orgCode},
+	         <if test="record.pCode != null">
+	            	#{record.pCode},
+	        </if>
+	        	     					
+    		<if test="record.parentCode == null">
+	            	null,
+	         </if>
+	         <if test="record.parentCode != null">
+	            	#{record.parentCode},
+	        </if>
+	        	     					
+    		<if test="record.completeCode == null">
+	            	null,
+	         </if>
+	         <if test="record.completeCode != null">
+	            	#{record.completeCode},
+	        </if>
+	        	     					
+    		<if test="record.requestUrl == null">
+	            	null,
+	         </if>
+	         <if test="record.requestUrl != null">
+	            	#{record.requestUrl},
+	        </if>
+	        	     					
+    		<if test="record.requestPage == null">
+	            	null,
+	         </if>
+	         <if test="record.requestPage != null">
+	            	#{record.requestPage},
+	        </if>
+	        	     					
+    		<if test="record.extensionOne == null">
+	            	null,
+	         </if>
+	         <if test="record.extensionOne != null">
+	            	#{record.extensionOne},
+	        </if>
+	        	     					
+    		<if test="record.extensionTwo == null">
+	            	null,
+	         </if>
+	         <if test="record.extensionTwo != null">
+	            	#{record.extensionTwo},
+	        </if>
+	        	     					
+    		<if test="record.extensionThree == null">
+	            	null,
+	         </if>
+	         <if test="record.extensionThree != null">
+	            	#{record.extensionThree},
+	        </if>
+	        	     					
+    		<if test="record.extensionFour == null">
+	            	null,
+	         </if>
+	         <if test="record.extensionFour != null">
+	            	#{record.extensionFour},
 	        </if>
 	        	     	     
 	    </trim>
@@ -315,12 +443,44 @@
 			    	is_delete = #{record.isDelete},
 			</if>
                                     
-			<if test="record.roleId != null">
-			    	role_id = #{record.roleId},
+			<if test="record.pName != null">
+			    	p_name = #{record.pName},
 			</if>
                                     
-			<if test="record.orgCode != null">
-			    	org_code = #{record.orgCode},
+			<if test="record.pCode != null">
+			    	p_code = #{record.pCode},
+			</if>
+                                    
+			<if test="record.parentCode != null">
+			    	parent_code = #{record.parentCode},
+			</if>
+                                    
+			<if test="record.completeCode != null">
+			    	complete_code = #{record.completeCode},
+			</if>
+                                    
+			<if test="record.requestUrl != null">
+			    	request_url = #{record.requestUrl},
+			</if>
+                                    
+			<if test="record.requestPage != null">
+			    	request_page = #{record.requestPage},
+			</if>
+                                    
+			<if test="record.extensionOne != null">
+			    	extension_one = #{record.extensionOne},
+			</if>
+                                    
+			<if test="record.extensionTwo != null">
+			    	extension_two = #{record.extensionTwo},
+			</if>
+                                    
+			<if test="record.extensionThree != null">
+			    	extension_three = #{record.extensionThree},
+			</if>
+                                    
+			<if test="record.extensionFour != null">
+			    	extension_four = #{record.extensionFour},
 			</if>
                                 
         </trim>
@@ -357,13 +517,53 @@
             </choose>
                                                    	
         	<choose>
-                <when test="record.roleId != null">role_id = #{record.roleId},</when>
-                <otherwise>role_id = null,</otherwise>
+                <when test="record.pName != null">p_name = #{record.pName},</when>
+                <otherwise>p_name = null,</otherwise>
             </choose>
                                                    	
         	<choose>
-                <when test="record.orgCode != null">org_code = #{record.orgCode},</when>
-                <otherwise>org_code = null,</otherwise>
+                <when test="record.pCode != null">p_code = #{record.pCode},</when>
+                <otherwise>p_code = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.parentCode != null">parent_code = #{record.parentCode},</when>
+                <otherwise>parent_code = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.completeCode != null">complete_code = #{record.completeCode},</when>
+                <otherwise>complete_code = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.requestUrl != null">request_url = #{record.requestUrl},</when>
+                <otherwise>request_url = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.requestPage != null">request_page = #{record.requestPage},</when>
+                <otherwise>request_page = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.extensionOne != null">extension_one = #{record.extensionOne},</when>
+                <otherwise>extension_one = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.extensionTwo != null">extension_two = #{record.extensionTwo},</when>
+                <otherwise>extension_two = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.extensionThree != null">extension_three = #{record.extensionThree},</when>
+                <otherwise>extension_three = null,</otherwise>
+            </choose>
+                                                   	
+        	<choose>
+                <when test="record.extensionFour != null">extension_four = #{record.extensionFour},</when>
+                <otherwise>extension_four = null,</otherwise>
             </choose>
                                    
         </trim>

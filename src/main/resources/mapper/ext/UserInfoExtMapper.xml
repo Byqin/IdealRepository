@@ -5,7 +5,7 @@
 <mapper namespace="com.pmo.pfc.dao.mapper.ext.UserInfoExtMapper">
 
     <!--> 表字段与属性映射关系 <!-->
-    <resultMap id="UserInfoMap" type="com.pmo.pfc.dao.entity.UserInfoDTO">
+    <resultMap id="UserInfoMap" type="com.pmo.pfc.dao.entity.UserInfoEntity">
         <result column="id" property="id" javaType="java.lang.Integer" />
         <result column="create_by" property="createBy" javaType="java.lang.String" />
         <result column="create_date" property="createDate" javaType="java.util.Date" />

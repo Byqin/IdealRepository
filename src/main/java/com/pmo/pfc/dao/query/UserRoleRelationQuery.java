@@ -5,7 +5,7 @@ import com.pmo.pfc.common.enu.OperatorEnum;
 import java.util.List;
 import java.util.Date;
 
-public class RolePermissionsRelationQuery {
+public class UserRoleRelationQuery {
 
 	private List<Criteria> values = Lists.newLinkedList();
 	private String id = "id";
@@ -16,23 +16,23 @@ public class RolePermissionsRelationQuery {
 	private String ver = "ver";
 	private String isDelete = "is_delete";
 	private String roleId = "role_id";
-	private String pCode = "p_code";
+	private String userId = "user_id";
 
 	public List<Criteria> getValues() {
         return values;
     }
 
-    public RolePermissionsRelationQuery beforeBracket(){
+    public UserRoleRelationQuery beforeBracket(){
         values.add(Criteria.custom(" ( "));
         return this;
     }
 
-    public RolePermissionsRelationQuery afterBracket(){
+    public UserRoleRelationQuery afterBracket(){
         values.add(Criteria.custom(" ) "));
         return this;
     }
 
-    public RolePermissionsRelationQuery and(){
+    public UserRoleRelationQuery and(){
         if(values == null || values.isEmpty()){
             return this;
         }
@@ -40,7 +40,7 @@ public class RolePermissionsRelationQuery {
         return this;
     }
 
-    public RolePermissionsRelationQuery or(){
+    public UserRoleRelationQuery or(){
         if(values == null || values.isEmpty()){
             return this;
         }
@@ -49,543 +49,543 @@ public class RolePermissionsRelationQuery {
     }
 		
 
-	public RolePermissionsRelationQuery idEqual(Integer value){
+	public UserRoleRelationQuery idEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,id));
         return this;
     }
     
-    public RolePermissionsRelationQuery idNotEqual(Integer value){
+    public UserRoleRelationQuery idNotEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idLg(Integer value){
+    public UserRoleRelationQuery idLg(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idLgEqual(Integer value){
+    public UserRoleRelationQuery idLgEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idLt(Integer value){
+    public UserRoleRelationQuery idLt(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idLtEqual(Integer value){
+    public UserRoleRelationQuery idLtEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idIn(List<Integer> lists){
+    public UserRoleRelationQuery idIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idNotIn(List<Integer> lists){
+    public UserRoleRelationQuery idNotIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idLike(Integer value){
+    public UserRoleRelationQuery idLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,id));
         return this;
     }
 
-    public RolePermissionsRelationQuery idNotLike(Integer value){
+    public UserRoleRelationQuery idNotLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,id));
         return this;
     }
     
-   public RolePermissionsRelationQuery idIsEmpty(){
+   public UserRoleRelationQuery idIsEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,id));
         return this;
     }
     
-    public RolePermissionsRelationQuery idNotEmpty(){
+    public UserRoleRelationQuery idNotEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,id));
         return this;
     }
 
-	public RolePermissionsRelationQuery createByEqual(String value){
+	public UserRoleRelationQuery createByEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.EQ,createBy));
         return this;
     }
     
-    public RolePermissionsRelationQuery createByNotEqual(String value){
+    public UserRoleRelationQuery createByNotEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NEQ,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByLg(String value){
+    public UserRoleRelationQuery createByLg(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LG,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByLgEqual(String value){
+    public UserRoleRelationQuery createByLgEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LGE,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByLt(String value){
+    public UserRoleRelationQuery createByLt(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LT,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByLtEqual(String value){
+    public UserRoleRelationQuery createByLtEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LTE,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByIn(List<String> lists){
+    public UserRoleRelationQuery createByIn(List<String> lists){
         values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.IN,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByNotIn(List<String> lists){
+    public UserRoleRelationQuery createByNotIn(List<String> lists){
         values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.NOT_IN,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByLike(String value){
+    public UserRoleRelationQuery createByLike(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LIKE,createBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery createByNotLike(String value){
+    public UserRoleRelationQuery createByNotLike(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NOT_LIKE,createBy));
         return this;
     }
     
-   public RolePermissionsRelationQuery createByIsEmpty(){
+   public UserRoleRelationQuery createByIsEmpty(){
         values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_EMPTY,createBy));
         return this;
     }
     
-    public RolePermissionsRelationQuery createByNotEmpty(){
+    public UserRoleRelationQuery createByNotEmpty(){
         values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_NOT_EMPTY,createBy));
         return this;
     }
 
-	public RolePermissionsRelationQuery createDateEqual(Date value){
+	public UserRoleRelationQuery createDateEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.EQ,createDate));
         return this;
     }
     
-    public RolePermissionsRelationQuery createDateNotEqual(Date value){
+    public UserRoleRelationQuery createDateNotEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.NEQ,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateLg(Date value){
+    public UserRoleRelationQuery createDateLg(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LG,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateLgEqual(Date value){
+    public UserRoleRelationQuery createDateLgEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LGE,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateLt(Date value){
+    public UserRoleRelationQuery createDateLt(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LT,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateLtEqual(Date value){
+    public UserRoleRelationQuery createDateLtEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LTE,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateIn(List<Date> lists){
+    public UserRoleRelationQuery createDateIn(List<Date> lists){
         values.add(Criteria.custom(lists,"DATE",OperatorEnum.IN,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateNotIn(List<Date> lists){
+    public UserRoleRelationQuery createDateNotIn(List<Date> lists){
         values.add(Criteria.custom(lists,"DATE",OperatorEnum.NOT_IN,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateLike(Date value){
+    public UserRoleRelationQuery createDateLike(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LIKE,createDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery createDateNotLike(Date value){
+    public UserRoleRelationQuery createDateNotLike(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.NOT_LIKE,createDate));
         return this;
     }
     
-   public RolePermissionsRelationQuery createDateIsEmpty(){
+   public UserRoleRelationQuery createDateIsEmpty(){
         values.add(Criteria.custom("","DATE", OperatorEnum.IS_EMPTY,createDate));
         return this;
     }
     
-    public RolePermissionsRelationQuery createDateNotEmpty(){
+    public UserRoleRelationQuery createDateNotEmpty(){
         values.add(Criteria.custom("","DATE", OperatorEnum.IS_NOT_EMPTY,createDate));
         return this;
     }
 
-	public RolePermissionsRelationQuery updateByEqual(String value){
+	public UserRoleRelationQuery updateByEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.EQ,updateBy));
         return this;
     }
     
-    public RolePermissionsRelationQuery updateByNotEqual(String value){
+    public UserRoleRelationQuery updateByNotEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NEQ,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByLg(String value){
+    public UserRoleRelationQuery updateByLg(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LG,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByLgEqual(String value){
+    public UserRoleRelationQuery updateByLgEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LGE,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByLt(String value){
+    public UserRoleRelationQuery updateByLt(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LT,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByLtEqual(String value){
+    public UserRoleRelationQuery updateByLtEqual(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LTE,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByIn(List<String> lists){
+    public UserRoleRelationQuery updateByIn(List<String> lists){
         values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.IN,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByNotIn(List<String> lists){
+    public UserRoleRelationQuery updateByNotIn(List<String> lists){
         values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.NOT_IN,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByLike(String value){
+    public UserRoleRelationQuery updateByLike(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LIKE,updateBy));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateByNotLike(String value){
+    public UserRoleRelationQuery updateByNotLike(String value){
         values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NOT_LIKE,updateBy));
         return this;
     }
     
-   public RolePermissionsRelationQuery updateByIsEmpty(){
+   public UserRoleRelationQuery updateByIsEmpty(){
         values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_EMPTY,updateBy));
         return this;
     }
     
-    public RolePermissionsRelationQuery updateByNotEmpty(){
+    public UserRoleRelationQuery updateByNotEmpty(){
         values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_NOT_EMPTY,updateBy));
         return this;
     }
 
-	public RolePermissionsRelationQuery updateDateEqual(Date value){
+	public UserRoleRelationQuery updateDateEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.EQ,updateDate));
         return this;
     }
     
-    public RolePermissionsRelationQuery updateDateNotEqual(Date value){
+    public UserRoleRelationQuery updateDateNotEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.NEQ,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateLg(Date value){
+    public UserRoleRelationQuery updateDateLg(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LG,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateLgEqual(Date value){
+    public UserRoleRelationQuery updateDateLgEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LGE,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateLt(Date value){
+    public UserRoleRelationQuery updateDateLt(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LT,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateLtEqual(Date value){
+    public UserRoleRelationQuery updateDateLtEqual(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LTE,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateIn(List<Date> lists){
+    public UserRoleRelationQuery updateDateIn(List<Date> lists){
         values.add(Criteria.custom(lists,"DATE",OperatorEnum.IN,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateNotIn(List<Date> lists){
+    public UserRoleRelationQuery updateDateNotIn(List<Date> lists){
         values.add(Criteria.custom(lists,"DATE",OperatorEnum.NOT_IN,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateLike(Date value){
+    public UserRoleRelationQuery updateDateLike(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.LIKE,updateDate));
         return this;
     }
 
-    public RolePermissionsRelationQuery updateDateNotLike(Date value){
+    public UserRoleRelationQuery updateDateNotLike(Date value){
         values.add(Criteria.custom(value,"DATE", OperatorEnum.NOT_LIKE,updateDate));
         return this;
     }
     
-   public RolePermissionsRelationQuery updateDateIsEmpty(){
+   public UserRoleRelationQuery updateDateIsEmpty(){
         values.add(Criteria.custom("","DATE", OperatorEnum.IS_EMPTY,updateDate));
         return this;
     }
     
-    public RolePermissionsRelationQuery updateDateNotEmpty(){
+    public UserRoleRelationQuery updateDateNotEmpty(){
         values.add(Criteria.custom("","DATE", OperatorEnum.IS_NOT_EMPTY,updateDate));
         return this;
     }
 
-	public RolePermissionsRelationQuery verEqual(Integer value){
+	public UserRoleRelationQuery verEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,ver));
         return this;
     }
     
-    public RolePermissionsRelationQuery verNotEqual(Integer value){
+    public UserRoleRelationQuery verNotEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verLg(Integer value){
+    public UserRoleRelationQuery verLg(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verLgEqual(Integer value){
+    public UserRoleRelationQuery verLgEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verLt(Integer value){
+    public UserRoleRelationQuery verLt(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verLtEqual(Integer value){
+    public UserRoleRelationQuery verLtEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verIn(List<Integer> lists){
+    public UserRoleRelationQuery verIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verNotIn(List<Integer> lists){
+    public UserRoleRelationQuery verNotIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verLike(Integer value){
+    public UserRoleRelationQuery verLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,ver));
         return this;
     }
 
-    public RolePermissionsRelationQuery verNotLike(Integer value){
+    public UserRoleRelationQuery verNotLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,ver));
         return this;
     }
     
-   public RolePermissionsRelationQuery verIsEmpty(){
+   public UserRoleRelationQuery verIsEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,ver));
         return this;
     }
     
-    public RolePermissionsRelationQuery verNotEmpty(){
+    public UserRoleRelationQuery verNotEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,ver));
         return this;
     }
 
-	public RolePermissionsRelationQuery isDeleteEqual(Integer value){
+	public UserRoleRelationQuery isDeleteEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,isDelete));
         return this;
     }
     
-    public RolePermissionsRelationQuery isDeleteNotEqual(Integer value){
+    public UserRoleRelationQuery isDeleteNotEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteLg(Integer value){
+    public UserRoleRelationQuery isDeleteLg(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteLgEqual(Integer value){
+    public UserRoleRelationQuery isDeleteLgEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteLt(Integer value){
+    public UserRoleRelationQuery isDeleteLt(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteLtEqual(Integer value){
+    public UserRoleRelationQuery isDeleteLtEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteIn(List<Integer> lists){
+    public UserRoleRelationQuery isDeleteIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteNotIn(List<Integer> lists){
+    public UserRoleRelationQuery isDeleteNotIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteLike(Integer value){
+    public UserRoleRelationQuery isDeleteLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,isDelete));
         return this;
     }
 
-    public RolePermissionsRelationQuery isDeleteNotLike(Integer value){
+    public UserRoleRelationQuery isDeleteNotLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,isDelete));
         return this;
     }
     
-   public RolePermissionsRelationQuery isDeleteIsEmpty(){
+   public UserRoleRelationQuery isDeleteIsEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,isDelete));
         return this;
     }
     
-    public RolePermissionsRelationQuery isDeleteNotEmpty(){
+    public UserRoleRelationQuery isDeleteNotEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,isDelete));
         return this;
     }
 
-	public RolePermissionsRelationQuery roleIdEqual(Integer value){
+	public UserRoleRelationQuery roleIdEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,roleId));
         return this;
     }
     
-    public RolePermissionsRelationQuery roleIdNotEqual(Integer value){
+    public UserRoleRelationQuery roleIdNotEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdLg(Integer value){
+    public UserRoleRelationQuery roleIdLg(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdLgEqual(Integer value){
+    public UserRoleRelationQuery roleIdLgEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdLt(Integer value){
+    public UserRoleRelationQuery roleIdLt(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdLtEqual(Integer value){
+    public UserRoleRelationQuery roleIdLtEqual(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdIn(List<Integer> lists){
+    public UserRoleRelationQuery roleIdIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdNotIn(List<Integer> lists){
+    public UserRoleRelationQuery roleIdNotIn(List<Integer> lists){
         values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdLike(Integer value){
+    public UserRoleRelationQuery roleIdLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,roleId));
         return this;
     }
 
-    public RolePermissionsRelationQuery roleIdNotLike(Integer value){
+    public UserRoleRelationQuery roleIdNotLike(Integer value){
         values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,roleId));
         return this;
     }
     
-   public RolePermissionsRelationQuery roleIdIsEmpty(){
+   public UserRoleRelationQuery roleIdIsEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,roleId));
         return this;
     }
     
-    public RolePermissionsRelationQuery roleIdNotEmpty(){
+    public UserRoleRelationQuery roleIdNotEmpty(){
         values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,roleId));
         return this;
     }
 
-	public RolePermissionsRelationQuery pCodeEqual(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.EQ,pCode));
+	public UserRoleRelationQuery userIdEqual(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,userId));
         return this;
     }
     
-    public RolePermissionsRelationQuery pCodeNotEqual(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NEQ,pCode));
+    public UserRoleRelationQuery userIdNotEqual(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeLg(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LG,pCode));
+    public UserRoleRelationQuery userIdLg(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeLgEqual(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LGE,pCode));
+    public UserRoleRelationQuery userIdLgEqual(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeLt(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LT,pCode));
+    public UserRoleRelationQuery userIdLt(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeLtEqual(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LTE,pCode));
+    public UserRoleRelationQuery userIdLtEqual(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeIn(List<String> lists){
-        values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.IN,pCode));
+    public UserRoleRelationQuery userIdIn(List<Integer> lists){
+        values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeNotIn(List<String> lists){
-        values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.NOT_IN,pCode));
+    public UserRoleRelationQuery userIdNotIn(List<Integer> lists){
+        values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeLike(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LIKE,pCode));
+    public UserRoleRelationQuery userIdLike(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,userId));
         return this;
     }
 
-    public RolePermissionsRelationQuery pCodeNotLike(String value){
-        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NOT_LIKE,pCode));
+    public UserRoleRelationQuery userIdNotLike(Integer value){
+        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,userId));
         return this;
     }
     
-   public RolePermissionsRelationQuery pCodeIsEmpty(){
-        values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_EMPTY,pCode));
+   public UserRoleRelationQuery userIdIsEmpty(){
+        values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,userId));
         return this;
     }
     
-    public RolePermissionsRelationQuery pCodeNotEmpty(){
-        values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_NOT_EMPTY,pCode));
+    public UserRoleRelationQuery userIdNotEmpty(){
+        values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,userId));
         return this;
     }
 }

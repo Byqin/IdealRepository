@@ -1,11 +1,12 @@
 package com.pmo.pfc.biz.impl;
 
+import com.pmo.pfc.api.dto.UserInfoDTO;
 import com.pmo.pfc.api.param.UserInfoParam;
 import com.pmo.pfc.biz.UserInfoService;
 import com.pmo.pfc.common.ResponseDTO;
 import com.pmo.pfc.common.ResultCode;
 import com.pmo.pfc.common.ServiceException;
-import com.pmo.pfc.dao.entity.UserInfoDTO;
+import com.pmo.pfc.dao.entity.UserInfoEntity;
 import com.pmo.pfc.dao.mapper.ext.UserInfoExtMapper;
 import com.pmo.pfc.dao.query.UserInfoQuery;
 import com.pmo.pfc.service.UserInfoRepository;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,8 +36,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public String getUserInfo(String userId) {
-        UserInfoDTO userInfoDTO =  userInfoDao.selectUserInfoByUserId(userId);
-        return Objects.isNull(userInfoDTO) ? "未找到数据": userInfoDTO.toString();
+        UserInfoEntity userInfoEntity =  userInfoDao.selectUserInfoByUserId(userId);
+        return Objects.isNull(userInfoEntity) ? "未找到数据": userInfoEntity.toString();
     }
 
     @Override
@@ -49,8 +50,8 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfoDTO record = new UserInfoDTO();
         BeanUtils.copyProperties(param,record);
         if(Objects.nonNull(param.getId())) {
-            List<UserInfoDTO> userInfoDTOS =  userInfoDao.selectByPrimary(param.getId());
-            if(CollectionUtils.isEmpty(userInfoDTOS)){
+            List<UserInfoEntity> userInfoEntities =  userInfoDao.selectByPrimary(param.getId());
+            if(CollectionUtils.isEmpty(userInfoEntities)){
                  throw new ServiceException(ResultCode.USER_NOT_EXIST);
             }
             userInfoDao.updateByPrimaryWithNull(param.getId(),record);
@@ -69,10 +70,10 @@ public class UserInfoServiceImpl implements UserInfoService {
                 .beforeBracket()
                 .userIdLike("123")
                 .and()
-                .userIdIn(Arrays.asList(new String[]{"qwqweqw"}))
+                .userIdIn(Collections.singletonList("qwqweqw"))
                 .afterBracket();
-        List<UserInfoDTO> userInfoDTOS = userInfoDao.selectByQuery(query);
-        return ResponseDTO.newInstance(userInfoDTOS).toString();
+        List<UserInfoEntity> userInfoEntities = userInfoDao.selectByQuery(query);
+        return ResponseDTO.newInstance(userInfoEntities).toString();
     }
 
 }

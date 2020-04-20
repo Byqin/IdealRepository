@@ -5,7 +5,7 @@
 <mapper namespace="com.pmo.pfc.dao.mapper.UserOrganizationRelationMapper">
 
 	<!--> 表字段与属性映射关系 <!-->
-    <resultMap id="UserOrganizationRelationMap" type="com.pmo.pfc.dao.entity.UserOrganizationRelationDTO">
+    <resultMap id="UserOrganizationRelationMap" type="com.pmo.pfc.dao.entity.UserOrganizationRelationEntity">
     				<result column="id" property="id" javaType="java.lang.Integer" />
 					<result column="create_by" property="createBy" javaType="java.lang.String" />
 					<result column="create_date" property="createDate" javaType="java.util.Date" />
@@ -38,7 +38,7 @@
     </select>
 
 	<!--> 添加信息，不含null的字段 <!-->
-    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.UserOrganizationRelationDTO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.UserOrganizationRelationEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_organization_relation
             <trim prefix="(" suffix=")" suffixOverrides=",">
              	             						             		             		
@@ -114,7 +114,7 @@
     </insert>
     
     <!--> 添加信息，含null的字段 <!-->
-    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.UserOrganizationRelationDTO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.UserOrganizationRelationEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_organization_relation(<include refid="baseInsertColumn" />)
         values(
             <include refid="baseInsertColumnValue" />

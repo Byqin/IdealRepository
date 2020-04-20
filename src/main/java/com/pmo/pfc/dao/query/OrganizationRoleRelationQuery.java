@@ -16,7 +16,7 @@ public class OrganizationRoleRelationQuery {
 	private String ver = "ver";
 	private String isDelete = "is_delete";
 	private String roleId = "role_id";
-	private String orgId = "org_id";
+	private String orgCode = "org_code";
 
 	public List<Criteria> getValues() {
         return values;
@@ -529,63 +529,63 @@ public class OrganizationRoleRelationQuery {
         return this;
     }
 
-	public OrganizationRoleRelationQuery orgIdEqual(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.EQ,orgId));
+	public OrganizationRoleRelationQuery orgCodeEqual(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.EQ,orgCode));
         return this;
     }
     
-    public OrganizationRoleRelationQuery orgIdNotEqual(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NEQ,orgId));
+    public OrganizationRoleRelationQuery orgCodeNotEqual(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NEQ,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdLg(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LG,orgId));
+    public OrganizationRoleRelationQuery orgCodeLg(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LG,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdLgEqual(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LGE,orgId));
+    public OrganizationRoleRelationQuery orgCodeLgEqual(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LGE,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdLt(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LT,orgId));
+    public OrganizationRoleRelationQuery orgCodeLt(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LT,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdLtEqual(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LTE,orgId));
+    public OrganizationRoleRelationQuery orgCodeLtEqual(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LTE,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdIn(List<Integer> lists){
-        values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.IN,orgId));
+    public OrganizationRoleRelationQuery orgCodeIn(List<String> lists){
+        values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.IN,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdNotIn(List<Integer> lists){
-        values.add(Criteria.custom(lists,"INTEGER",OperatorEnum.NOT_IN,orgId));
+    public OrganizationRoleRelationQuery orgCodeNotIn(List<String> lists){
+        values.add(Criteria.custom(lists,"VARCHAR",OperatorEnum.NOT_IN,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdLike(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.LIKE,orgId));
+    public OrganizationRoleRelationQuery orgCodeLike(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.LIKE,orgCode));
         return this;
     }
 
-    public OrganizationRoleRelationQuery orgIdNotLike(Integer value){
-        values.add(Criteria.custom(value,"INTEGER", OperatorEnum.NOT_LIKE,orgId));
+    public OrganizationRoleRelationQuery orgCodeNotLike(String value){
+        values.add(Criteria.custom(value,"VARCHAR", OperatorEnum.NOT_LIKE,orgCode));
         return this;
     }
     
-   public OrganizationRoleRelationQuery orgIdIsEmpty(){
-        values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_EMPTY,orgId));
+   public OrganizationRoleRelationQuery orgCodeIsEmpty(){
+        values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_EMPTY,orgCode));
         return this;
     }
     
-    public OrganizationRoleRelationQuery orgIdNotEmpty(){
-        values.add(Criteria.custom("","INTEGER", OperatorEnum.IS_NOT_EMPTY,orgId));
+    public OrganizationRoleRelationQuery orgCodeNotEmpty(){
+        values.add(Criteria.custom("","VARCHAR", OperatorEnum.IS_NOT_EMPTY,orgCode));
         return this;
     }
 }

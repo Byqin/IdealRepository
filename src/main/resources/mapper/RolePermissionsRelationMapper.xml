@@ -5,7 +5,7 @@
 <mapper namespace="com.pmo.pfc.dao.mapper.RolePermissionsRelationMapper">
 
 	<!--> 表字段与属性映射关系 <!-->
-    <resultMap id="RolePermissionsRelationMap" type="com.pmo.pfc.dao.entity.RolePermissionsRelationDTO">
+    <resultMap id="RolePermissionsRelationMap" type="com.pmo.pfc.dao.entity.RolePermissionsRelationEntity">
     				<result column="id" property="id" javaType="java.lang.Integer" />
 					<result column="create_by" property="createBy" javaType="java.lang.String" />
 					<result column="create_date" property="createDate" javaType="java.util.Date" />
@@ -14,7 +14,7 @@
 					<result column="ver" property="ver" javaType="java.lang.Integer" />
 					<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
 					<result column="role_id" property="roleId" javaType="java.lang.Integer" />
-					<result column="permiss_id" property="permissId" javaType="java.lang.Integer" />
+					<result column="p_code" property="pCode" javaType="java.lang.String" />
 				
 	</resultMap>
     
@@ -38,7 +38,7 @@
     </select>
 
 	<!--> 添加信息，不含null的字段 <!-->
-    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.RolePermissionsRelationDTO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addUserInfo" parameterType="com.pmo.pfc.dao.entity.RolePermissionsRelationEntity" useGeneratedKeys="true" keyProperty="id">
         insert into role_permissions_relation
             <trim prefix="(" suffix=")" suffixOverrides=",">
              	             						             		             		
@@ -70,8 +70,8 @@
 	                    role_id,
 	                </if>
 	                				             		             		
-				    <if test="permissId != null">
-	                    permiss_id,
+				    <if test="pCode != null">
+	                    p_code,
 	                </if>
 	                								
             </trim>
@@ -106,15 +106,15 @@
 		            	#{roleId,jdbcType=INTEGER},
 		        	</if>
 		        							        			        	
-					<if test="permissId != null">
-		            	#{permissId,jdbcType=INTEGER},
+					<if test="pCode != null">
+		            	#{pCode,jdbcType=VARCHAR},
 		        	</if>
 		        									
             </trim>
     </insert>
     
     <!--> 添加信息，含null的字段 <!-->
-    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.RolePermissionsRelationDTO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addUserInfoWithNull" parameterType="com.pmo.pfc.dao.entity.RolePermissionsRelationEntity" useGeneratedKeys="true" keyProperty="id">
         insert into role_permissions_relation(<include refid="baseInsertColumn" />)
         values(
             <include refid="baseInsertColumnValue" />
@@ -189,12 +189,12 @@
     
     <!--> 基础查询字段 <!-->
     <sql id="baseColumn">
-        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		permiss_id				
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		p_code				
     </sql>
     
     <!--> 基础插入字段 <!-->
     <sql id="baseInsertColumn">
-        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		permiss_id				
+        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		role_id,		p_code				
     </sql>
     
      <!--> 基础插入字段值 <!-->
@@ -250,11 +250,11 @@
 	            	#{record.roleId},
 	        </if>
 	        	     					
-    		<if test="record.permissId == null">
+    		<if test="record.pCode == null">
 	            	null,
 	         </if>
-	         <if test="record.permissId != null">
-	            	#{record.permissId},
+	         <if test="record.pCode != null">
+	            	#{record.pCode},
 	        </if>
 	        	     	     
 	    </trim>
@@ -319,8 +319,8 @@
 			    	role_id = #{record.roleId},
 			</if>
                                     
-			<if test="record.permissId != null">
-			    	permiss_id = #{record.permissId},
+			<if test="record.pCode != null">
+			    	p_code = #{record.pCode},
 			</if>
                                 
         </trim>
@@ -362,8 +362,8 @@
             </choose>
                                                    	
         	<choose>
-                <when test="record.permissId != null">permiss_id = #{record.permissId},</when>
-                <otherwise>permiss_id = null,</otherwise>
+                <when test="record.pCode != null">p_code = #{record.pCode},</when>
+                <otherwise>p_code = null,</otherwise>
             </choose>
                                    
         </trim>
