@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Slf4j
 @Configuration
-@MapperScan(basePackages = {"com.pmo.pfc.dao.mapper"},sqlSessionFactoryRef = "sqlSessionFactory",sqlSessionTemplateRef = "sqlSessionTemplate")
+@MapperScan(basePackages = {"com.pmo.pfc.dao.mapper"},sqlSessionFactoryRef = "sqlSessionFactory")
 public class MyConfinguar {
 
     @Bean("dataSource")

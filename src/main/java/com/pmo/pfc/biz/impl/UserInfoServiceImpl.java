@@ -9,6 +9,7 @@ import com.pmo.pfc.dao.entity.UserInfoDTO;
 import com.pmo.pfc.dao.mapper.ext.UserInfoExtMapper;
 import com.pmo.pfc.dao.query.UserInfoQuery;
 import com.pmo.pfc.service.UserInfoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
@@ -26,6 +28,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
     private UserInfoRepository userInfoRepository;
+
+    public UserInfoServiceImpl(){
+        log.info("=====================================");
+    }
 
     @Override
     public String getUserInfo(String userId) {
