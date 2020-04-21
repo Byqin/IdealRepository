@@ -17,9 +17,9 @@ public class UserOrganizationRelationEntity extends BaseEntity {
 			
 	/**
 	* 描述 组织id
-	*字段备注 org_id
+	*字段备注 org_code
 	*/	
-	private Integer orgId;
+	private String orgCode;
 	
 }
 

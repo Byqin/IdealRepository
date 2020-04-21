@@ -10,6 +10,8 @@ import com.pmo.pfc.dao.mapper.ext.*;
 import com.pmo.pfc.dao.query.OrganizationInfoQuery;
 import com.pmo.pfc.dao.query.OrganizationRoleRelationQuery;
 import com.pmo.pfc.dao.query.UserInfoQuery;
+import com.pmo.pfc.service.OrganizationInfoRepository;
+import com.pmo.pfc.service.RoleInfoRepository;
 import com.pmo.pfc.service.UserInfoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
@@ -37,6 +39,12 @@ public class UserInfoRepositoryImp implements UserInfoRepository {
     @Resource
     private UserRoleRelationExtMapper userRoleRelationExtMapper;
 
+    @Resource
+    private OrganizationInfoRepository organizationInfoRepository;
+
+    @Resource
+    private RoleInfoRepository roleInfoRepository;
+
     @Override
     public Integer createUser(UserInfoDTO userInfoDTO ) {
         //step1 添加用户信息
@@ -58,7 +66,7 @@ public class UserInfoRepositoryImp implements UserInfoRepository {
         }
         organizationEntities.forEach(item->{
             UserOrganizationRelationEntity relationDTO = new UserOrganizationRelationEntity();
-            relationDTO.setOrgId(item.getId());
+            relationDTO.setOrgCode(item.getOrgCode());
             relationDTO.setUserId(id);
             relationDTO.init(BaseConstants.INT_1);
             records.add(relationDTO);
@@ -74,7 +82,7 @@ public class UserInfoRepositoryImp implements UserInfoRepository {
             orgRuleQuery.orgCodeIn(organizationEntities.stream().map(OrganizationInfoEntity::getOrgCode).collect(Collectors.toList()));
             List<OrganizationRoleRelationEntity> orgRoleLists = organizationRoleRelationExtMapper.selectByQuery(orgRuleQuery);
             userRoles.addAll(roleEntities.stream().filter(item->
-                    orgRoleLists.stream().noneMatch(x->x.getRoleId() == item.getId())
+                    orgRoleLists.stream().noneMatch(x-> x.getRoleId().equals(item.getId()))
             ).map(item->{
                 UserRoleRelationEntity userRoleRelationEntity = new UserRoleRelationEntity();
                 userRoleRelationEntity.setRoleId(item.getId());
@@ -99,6 +107,47 @@ public class UserInfoRepositoryImp implements UserInfoRepository {
         query.userIdEqual(userId);
         List<UserInfoEntity> userInfoEntities =  userInfoExtMapper.selectByQuery(query);
         return !CollectionUtils.isEmpty(userInfoEntities);
+    }
+
+    @Override
+    public UserInfoDTO getUserInfoByUserId(String userId) {
+        UserInfoDTO data = new UserInfoDTO();
+        //step1 查询用户信息
+        UserInfoEntity userInfoEntity = userInfoExtMapper.selectUserInfoByUserId(userId);
+        if(userInfoEntity == null ){
+            throw new ServiceException(ResultCode.USER_NOT_EXIST);
+        }
+        BeanUtils.copyProperties(userInfoEntity,data);
+        // step2 查询组织信息
+        List<OrganizationInfoEntity> organizationEntities = organizationInfoRepository.queryByUserId(userInfoEntity.getId());
+        data.setOrganizationEntities(organizationEntities);
+
+        // step3 查询角色信息
+        List<RoleInfoEntity> allRoleInfos = Lists.newArrayList();
+        // 组织的角色
+        List<RoleInfoEntity> orgRoleInfos = roleInfoRepository.queryByOrgCodes(
+                organizationEntities.stream()
+                                    .map(OrganizationInfoEntity::getOrgCode)
+                                    .collect(Collectors.toList())
+        );
+        // 用户单独的角色
+        List<RoleInfoEntity> userRoleInfos = roleInfoRepository.queryByUserId(userInfoEntity.getId());
+
+        // step4 查询权限信息
+        allRoleInfos.addAll(orgRoleInfos);
+        allRoleInfos.addAll(userRoleInfos);
+        List<PermissionsInfoEntity>  allPermissionsInfos = roleInfoRepository.queryAllPermissionsByRoleCodes(
+                allRoleInfos.stream()
+                            .map(RoleInfoEntity::getId)
+                            .distinct()
+                            .collect(Collectors.toList())
+        );
+
+        data.setOrgRoleEntities(orgRoleInfos);
+        data.setRoleEntities(userRoleInfos);
+        data.setAllPermissionsInfos(allPermissionsInfos);
+
+        return data;
     }
 
 }

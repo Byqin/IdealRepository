@@ -8,7 +8,6 @@ import com.pmo.pfc.common.ResultCode;
 import com.pmo.pfc.common.ServiceException;
 import com.pmo.pfc.dao.entity.UserInfoEntity;
 import com.pmo.pfc.dao.mapper.ext.UserInfoExtMapper;
-import com.pmo.pfc.dao.query.UserInfoQuery;
 import com.pmo.pfc.service.UserInfoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,6 +52,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             if(CollectionUtils.isEmpty(userInfoEntities)){
                  throw new ServiceException(ResultCode.USER_NOT_EXIST);
             }
+            // 不完整，权限和组织信息没有同步修改，页面参数不完整 待完成
             userInfoDao.updateByPrimaryWithNull(param.getId(),record);
         }else{
             userInfoRepository.createUser(record);
@@ -64,16 +63,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public String queryInfo(String userId) {
-        UserInfoQuery query = new UserInfoQuery();
-        query.userIdEqual("admin")
-                .or()
-                .beforeBracket()
-                .userIdLike("123")
-                .and()
-                .userIdIn(Collections.singletonList("qwqweqw"))
-                .afterBracket();
-        List<UserInfoEntity> userInfoEntities = userInfoDao.selectByQuery(query);
-        return ResponseDTO.newInstance(userInfoEntities).toString();
+        UserInfoDTO data = userInfoRepository.getUserInfoByUserId(userId);
+        //TODO 验证用户是否正常，该验证方法应属于UserInfoDTO
+        return ResponseDTO.newInstance(data).toString();
     }
 
 }

@@ -14,7 +14,7 @@
 					<result column="ver" property="ver" javaType="java.lang.Integer" />
 					<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
 					<result column="user_id" property="userId" javaType="java.lang.Integer" />
-					<result column="org_id" property="orgId" javaType="java.lang.Integer" />
+					<result column="org_code" property="orgCode" javaType="java.lang.String" />
 				
 	</resultMap>
     
@@ -70,8 +70,8 @@
 	                    user_id,
 	                </if>
 	                				             		             		
-				    <if test="orgId != null">
-	                    org_id,
+				    <if test="orgCode != null">
+	                    org_code,
 	                </if>
 	                								
             </trim>
@@ -106,8 +106,8 @@
 		            	#{userId,jdbcType=INTEGER},
 		        	</if>
 		        							        			        	
-					<if test="orgId != null">
-		            	#{orgId,jdbcType=INTEGER},
+					<if test="orgCode != null">
+		            	#{orgCode,jdbcType=VARCHAR},
 		        	</if>
 		        									
             </trim>
@@ -189,12 +189,12 @@
     
     <!--> 基础查询字段 <!-->
     <sql id="baseColumn">
-        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		user_id,		org_id				
+        id,		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		user_id,		org_code				
     </sql>
     
     <!--> 基础插入字段 <!-->
     <sql id="baseInsertColumn">
-        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		user_id,		org_id				
+        		create_by,		create_date,		update_by,		update_date,		ver,		is_delete,		user_id,		org_code				
     </sql>
     
      <!--> 基础插入字段值 <!-->
@@ -250,11 +250,11 @@
 	            	#{record.userId},
 	        </if>
 	        	     					
-    		<if test="record.orgId == null">
+    		<if test="record.orgCode == null">
 	            	null,
 	         </if>
-	         <if test="record.orgId != null">
-	            	#{record.orgId},
+	         <if test="record.orgCode != null">
+	            	#{record.orgCode},
 	        </if>
 	        	     	     
 	    </trim>
@@ -319,8 +319,8 @@
 			    	user_id = #{record.userId},
 			</if>
                                     
-			<if test="record.orgId != null">
-			    	org_id = #{record.orgId},
+			<if test="record.orgCode != null">
+			    	org_code = #{record.orgCode},
 			</if>
                                 
         </trim>
@@ -362,8 +362,8 @@
             </choose>
                                                    	
         	<choose>
-                <when test="record.orgId != null">org_id = #{record.orgId},</when>
-                <otherwise>org_id = null,</otherwise>
+                <when test="record.orgCode != null">org_code = #{record.orgCode},</when>
+                <otherwise>org_code = null,</otherwise>
             </choose>
                                    
         </trim>

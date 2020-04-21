@@ -25,4 +25,11 @@ public interface UserInfoRepository {
      */
     boolean checkUserIdExist(String userId,Integer id);
 
+    /**
+     * 根据用户id获取用户信息
+     * @param userId  用户id
+     * @return 返回用户信息
+     */
+    UserInfoDTO getUserInfoByUserId(String userId);
+
 }
