@@ -34,6 +34,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public String getUserInfo(String userId) {
+        log.info("========= getUserInfo start =========");
         UserInfoEntity userInfoEntity =  userInfoDao.selectUserInfoByUserId(userId);
         return Objects.isNull(userInfoEntity) ? "未找到数据": userInfoEntity.toString();
     }

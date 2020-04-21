@@ -2,6 +2,7 @@ package com.pmo.pfc.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import groovy.util.logging.Slf4j;
+import org.apache.commons.compress.utils.Lists;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,6 +16,8 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 @Configuration
@@ -48,8 +51,12 @@ public class MyConfinguar {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
-        Resource[] resource= resourceResolver.getResources("classpath*:mapper/*.xml");
-        factoryBean.setMapperLocations(resource);
+        List<Resource> resources = Lists.newArrayList();
+        Resource[] resource = resourceResolver.getResources("classpath*:mapper/*.xml");
+        Resource[] resourceExt = resourceResolver.getResources("classpath*:mapper/ext/*.xml");
+        resources.addAll(Arrays.asList(resource));
+        resources.addAll(Arrays.asList(resourceExt));
+        factoryBean.setMapperLocations(resources.toArray(new Resource[0]));
         return factoryBean.getObject();
     }
 
